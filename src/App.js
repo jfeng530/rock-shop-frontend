@@ -73,12 +73,18 @@ class App extends React.Component {
     localStorage.cart = this.state.cart.map(item => item.id )
   }
 
+  clearCart = () => {
+    this.setState({
+      cart: []
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token}/>
         <SideContainer filterRocks={this.filterRocksByCategory}/>
-        <MainContainer addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
       </div>
     )
   }
