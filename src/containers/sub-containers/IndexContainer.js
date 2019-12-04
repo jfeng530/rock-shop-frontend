@@ -9,9 +9,11 @@ class IndexContainer extends React.Component {
         const displayRocks = this.props.displayRocks.map(rock => <RockCard key={rock.id} rock={rock} />)
 
         return (
+            <>
             <CardDeck>
                 {displayRocks}
             </CardDeck>
+            </>
         )
     }
 }

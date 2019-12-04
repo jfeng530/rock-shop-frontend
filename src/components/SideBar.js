@@ -14,7 +14,7 @@ export class SideBar extends Component {
     
     render() {
         return (
-            <div>
+            <>
                 <h4>Categories</h4>
                 <NavLink to="/rocks">
                     <select value={this.state.value} onChange={this.handleChange}>
@@ -28,7 +28,7 @@ export class SideBar extends Component {
                         <option value="Igneoous">Igneoous</option>
                     </select>
                 </NavLink>
-            </div>
+            </>
         )
     }
 }

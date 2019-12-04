@@ -16,6 +16,7 @@ export class NavBar extends Component {
 
   render() {
     return (
+      <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand as={Link} to="/">We Sell Rocks</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -29,6 +30,7 @@ export class NavBar extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      </>
     )
   }
 }

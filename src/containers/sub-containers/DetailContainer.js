@@ -6,6 +6,7 @@ const DetailContainer = (props) => {
     const { rock } = props;
 
     return (
+        <>
         <Card style={{ width: '20rem' }}>
             <Card.Img variant="top" src={rock.image_url} />
             <Card.Body>
@@ -19,6 +20,7 @@ const DetailContainer = (props) => {
                 <Button variant="primary">Add to Cart</Button>
             </Card.Body>
         </Card>
+        </>
     );
 }
 

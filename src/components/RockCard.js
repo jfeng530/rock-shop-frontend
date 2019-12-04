@@ -8,6 +8,7 @@ const RockCard = (props) => {
     const { rock } = props;
 
     return (
+        <>
         <Card>
             <NavLink to={"/rocks/" + rock.id}>
                 <Card.Img variant="top" src={rock.image_url} />
@@ -20,6 +21,7 @@ const RockCard = (props) => {
                 </Card.Footer>
             </NavLink>
         </Card>
+        </>
     )
 }
 

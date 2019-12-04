@@ -11,7 +11,7 @@ export class MainContainer extends Component {
     render() {
         console.log(this.props)
         return (
-            <div>
+            <>
                 
                 <Switch>
                     <Route exact path="/rocks" >
@@ -37,7 +37,7 @@ export class MainContainer extends Component {
 
                     <Route exact path="/" component={ Home } />
                 </Switch>
-            </div>
+            </>
         )
     }
 

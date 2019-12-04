@@ -3,9 +3,9 @@ import LogIn from '../../components/LogIn'
 
 const LogInContainer = (props) => {
     return (
-        <div>
+        <>
            <LogIn setToken={props.setToken} /> 
-        </div>
+        </>
     );
 }
 
