@@ -13,20 +13,20 @@ class App extends React.Component {
     displayRocks: []
   }
 
-
-
   componentDidMount = async() => {
     let rawRocks = await fetch('http://localhost:3000/rocks')
     let rocks = await rawRocks.json() 
       this.setState({
         token: localStorage.token,
         loggedInUserId: localStorage.userId,
-        rocks,
+        allRocks: rocks,
         displayRocks: rocks
       })
   }
 
   setToken = ({ token, user_id })  =>{
+    console.log(token)
+    console.log(user_id)
 
     localStorage.token = token
     localStorage.userId = user_id
@@ -47,8 +47,6 @@ class App extends React.Component {
     })
   }
 
-
-
   filterRocksByCategory = (value) => {
     if (value === 'All') {
       this.setState({
@@ -64,9 +62,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <HeaderContainer />
+        <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token}/>
         <SideContainer filterRocks={this.filterRocksByCategory}/>
-        <MainContainer token={this.state.token} loggedInUserId={this.state.loggedInUserId} allRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
       </div>
     )
   }

@@ -1,10 +1,10 @@
 import React from 'react';
 import LogIn from '../../components/LogIn'
 
-const LogInContainer = () => {
+const LogInContainer = (props) => {
     return (
         <div>
-           <LogIn /> 
+           <LogIn setToken={props.setToken} /> 
         </div>
     );
 }

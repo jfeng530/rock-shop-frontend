@@ -6,7 +6,7 @@ class IndexContainer extends React.Component {
     
     render(){
         
-        const displayRocks = this.props.allRocks.map(rock => <RockCard key={rock.id} rock={rock} />)
+        const displayRocks = this.props.displayRocks.map(rock => <RockCard key={rock.id} rock={rock} />)
 
         return (
             <CardDeck>

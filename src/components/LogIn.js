@@ -40,7 +40,8 @@ class LogIn extends React.Component {
 
   signUpSubmitted = (event) => {
     event.preventDefault() 
-    
+    console.log(this.state.username)
+    console.log(this.state.password)
   }
 
   render(){

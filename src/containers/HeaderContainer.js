@@ -5,7 +5,7 @@ export class HeaderContainer extends Component {
     render() {
         return (
             <div>
-                <NavBar />
+                <NavBar handleLogOut={this.props.handleLogOut} token={this.props.token}/>
             </div>
         );
     }

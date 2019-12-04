@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { CartContainer, DetailContainer, EditUserContainer, IndexContainer, LogInContainer, AccountContainer } from "./sub-containers";
 import Home from '../components/Home'
-import { Route, Switch, Link, NavLink } from 'react-router-dom'
+import { Route, Switch, Link, NavLink, Redirect } from 'react-router-dom'
 
 
 export class MainContainer extends Component {
 
-    // indexContainerWithProps = () => {
-    //     return <IndexContainer allRocks={this.props.allRocks} />
-    // }
-
+    loginRender = () => {if (!!this.props.token){return <Redirect to="/rocks" />} else return <Redirect to="/login"/>}
+    
     render() {
+        console.log(this.props)
         return (
             <div>
+                
                 <Switch>
                     <Route exact path="/rocks" >
-                        {/* {this.indexContainerWithProps} */}
-                        <IndexContainer allRocks={this.props.allRocks} />
+                        <IndexContainer displayRocks={this.props.displayRocks} />
                     </Route>
 
                     <Route path="/rocks/:id" render={ this.renderRock } />
@@ -25,7 +24,10 @@ export class MainContainer extends Component {
                         <CartContainer currentCart={this.props.currentCart}/>
                     </Route>
 
-                    <Route path="/login" component={ LogInContainer } />
+                    <Route path="/login" >
+                        {/* <LogInContainer setToken={this.props.setToken} /> */}
+                        {!!this.props.token ? <Redirect to="/rocks"/> : <LogInContainer setToken={this.props.setToken} />}
+                    </Route>
 
                     <Route exact path="/:user">
                         <AccountContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId}/>    
@@ -40,7 +42,7 @@ export class MainContainer extends Component {
     }
 
     renderRock = (renderParams) => {
-        console.log(renderParams)
+        // console.log(renderParams)
         const id = parseInt(renderParams.match.params.id)
         // this will render a rock
         const theRock = this.props.allRocks.find(rock => rock.id === id)
