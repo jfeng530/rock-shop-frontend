@@ -9,7 +9,7 @@ export class SideBar extends Component {
     
     handleChange = (event) => {
         this.setState({value: event.target.value})
-        this.props.filterRocks(event.target.value)
+        this.props.filterRocksByCategory(event.target.value)
     }
     
     render() {
@@ -25,7 +25,7 @@ export class SideBar extends Component {
                         <option value="Danger">Danger</option>
                         <option value="Boring">Boring</option>
                         <option value="Fancy">Fancy</option>
-                        <option value="Igneoous">Igneoous</option>
+                        <option value="Igneous">Igneous</option>
                     </select>
                 </NavLink>
             </>

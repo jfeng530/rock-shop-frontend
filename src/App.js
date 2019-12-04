@@ -2,7 +2,6 @@ import React from 'react';
 // import './App.css';
 import HeaderContainer from "./containers/HeaderContainer";
 import MainContainer from "./containers/MainContainer";
-import SideContainer from "./containers/SideContainer";
 
 class App extends React.Component {
   state = {
@@ -56,11 +55,11 @@ class App extends React.Component {
   filterRocksByCategory = (value) => {
     if (value === 'All') {
       this.setState({
-        displayRocks: this.state.rocks
+        displayRocks: this.state.allRocks
       })
     } else {
       this.setState({
-        displayRocks: this.state.rocks.filter(rock => rock.category === value)
+        displayRocks: this.state.allRocks.filter(rock => rock.category === value)
       })
     }
   }
@@ -83,8 +82,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token}/>
-        <SideContainer filterRocks={this.filterRocksByCategory}/>
-        <MainContainer clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer filterRocksByCategory={this.filterRocksByCategory} clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
       </div>
     )
   }
