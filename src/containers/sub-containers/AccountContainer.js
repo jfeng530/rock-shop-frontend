@@ -1,13 +1,14 @@
 import React from 'react';
+import EditUsernameContainer from './EditUsernameContainer'
 
 class AccountContainer extends React.Component{
     state = {
         myOrders: []
     }
     componentDidMount = async () => {
-        let rawUser = await fetch(`http://localhost:3000/users/6`, {
+        let rawUser = await fetch(`http://localhost:3000/users/${this.props.loggedInUserId}`, {
             headers: {
-                "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.F1zStOFrmzxhB7Kh5wVbe0E1lL_LnGfoEZuqA5YI748"
+                "Authorization": this.props.token
             }
             })
             let user = await rawUser.json()
@@ -20,7 +21,9 @@ class AccountContainer extends React.Component{
     render(){
     return (
         <>
-         
+         <h1>My Account:</h1>
+         <button onclick={< EditUsernameContainer />}>Edit </button>
+         <h2>My Orders</h2>
         </>
     )}
 }

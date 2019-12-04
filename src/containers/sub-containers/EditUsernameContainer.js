@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditUserContainer = () => {
+const EditUsernameContainer = () => {
     return (
         <>
             
@@ -8,4 +8,4 @@ const EditUserContainer = () => {
     );
 }
 
-export default EditUserContainer;
+export default EditUsernameContainer;

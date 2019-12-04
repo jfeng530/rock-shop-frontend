@@ -43,8 +43,8 @@ class App extends React.Component {
   }
 
   logOutClick = () => {
-    localStorage.userId = null
-    localStorage.token = null
+    localStorage.userId = ""
+    localStorage.token = ""
 
     this.setState({
       loggedInUserId: null,

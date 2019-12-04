@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CartContainer, DetailContainer, EditUserContainer, IndexContainer,  AccountContainer } from "./sub-containers";
+import { CartContainer, DetailContainer, EditUsernameContainer, IndexContainer,  AccountContainer } from "./sub-containers";
 import LogIn from '../components/LogIn';
 import { Route, Switch, Redirect } from 'react-router-dom'
 
@@ -32,7 +32,7 @@ export class MainContainer extends Component {
                         <AccountContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId}/>    
                     </Route> 
 
-                    <Route exact path="/:user/edit" component={ EditUserContainer } />
+                    <Route exact path="/:user/edit" component={ EditUsernameContainer } />
 
                     <Route exact path='/'> 
                     {!!this.props.token ? <Redirect to="/rocks"/> : <LogIn setToken={this.props.setToken} />}
