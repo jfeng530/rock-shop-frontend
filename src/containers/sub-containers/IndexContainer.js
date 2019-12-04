@@ -1,7 +1,7 @@
 import React from 'react';
 import RockCard from '../../components/RockCard'
-import SideContainer from "./SideContainer";
-import { Card, CardDeck } from 'react-bootstrap'
+import SideBar from "../../components/SideBar";
+import { CardDeck } from 'react-bootstrap'
 
 class IndexContainer extends React.Component {
     
@@ -12,7 +12,7 @@ class IndexContainer extends React.Component {
         return (
             <>
             <CardDeck>
-            <SideContainer filterRocksByCategory={this.props.filterRocksByCategory} />
+            <SideBar filterRocksByCategory={this.props.filterRocksByCategory} />
                 {displayRocks}
             </CardDeck>
             </>

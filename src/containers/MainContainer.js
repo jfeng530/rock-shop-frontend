@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { CartContainer, DetailContainer, EditUserContainer, IndexContainer, LogInContainer, AccountContainer } from "./sub-containers";
-import Home from '../components/Home'
-import { Route, Switch, Link, NavLink, Redirect } from 'react-router-dom'
+import { CartContainer, DetailContainer, EditUserContainer, IndexContainer,  AccountContainer } from "./sub-containers";
+import LogIn from '../components/LogIn';
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 
 export class MainContainer extends Component {
@@ -25,8 +25,7 @@ export class MainContainer extends Component {
                     </Route>
 
                     <Route path="/login" >
-                        {/* <LogInContainer setToken={this.props.setToken} /> */}
-                        {!!this.props.token ? <Redirect to="/rocks"/> : <LogInContainer setToken={this.props.setToken} />}
+                        {!!this.props.token ? <Redirect to="/rocks"/> : <LogIn setToken={this.props.setToken} />}
                     </Route>
 
                     <Route exact path="/:user">
@@ -35,7 +34,9 @@ export class MainContainer extends Component {
 
                     <Route exact path="/:user/edit" component={ EditUserContainer } />
 
-                    <Route exact path="/" component={ Home } />
+                    <Route exact path='/'> 
+                    {!!this.props.token ? <Redirect to="/rocks"/> : <LogIn setToken={this.props.setToken} />}
+                    </Route>
                 </Switch>
             </>
         )

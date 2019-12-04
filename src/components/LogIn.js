@@ -1,7 +1,7 @@
 import React from 'react';
 
 class LogIn extends React.Component {
-
+    
   state = {
     logIn: true,
     username: "",
@@ -116,4 +116,4 @@ class LogIn extends React.Component {
 
 }
 
-export default LogIn
+export default LogIn;
