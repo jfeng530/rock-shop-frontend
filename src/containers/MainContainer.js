@@ -9,7 +9,7 @@ export class MainContainer extends Component {
     loginRender = () => {if (!!this.props.token){return <Redirect to="/rocks" />} else return <Redirect to="/login"/>}
     
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <>
                 
@@ -21,7 +21,7 @@ export class MainContainer extends Component {
                     <Route path="/rocks/:id" render={ this.renderRock } />
 
                     <Route path="/cart" >
-                        <CartContainer currentCart={this.props.currentCart}/>
+                        <CartContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId} currentCart={this.props.currentCart}/>
                     </Route>
 
                     <Route path="/login" >
@@ -45,8 +45,8 @@ export class MainContainer extends Component {
         // console.log(renderParams)
         const id = parseInt(renderParams.match.params.id)
         // this will render a rock
-        const theRock = this.props.allRocks.find(rock => rock.id === id)
-        return <DetailContainer rock={ theRock } />
+        const theRock = this.props.displayRocks.find(rock => rock.id === id)
+        return <DetailContainer addToCart={this.props.addToCart} rock={ theRock } />
     }
 }
 

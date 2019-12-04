@@ -24,6 +24,12 @@ class App extends React.Component {
       })
   }
 
+  // if (localStorage.cart) {
+  //   map.(id => this.setState({
+  //     cart: [...this.state.cart, rock#{id}]
+  //   }))
+  // }
+
   setToken = ({ token, user_id })  =>{
     console.log(token)
     console.log(user_id)
@@ -59,16 +65,23 @@ class App extends React.Component {
     }
   }
 
+  addToCart = (rock) => {
+    // console.log(rock)
+    this.setState({
+      cart: [...this.state.cart, rock]
+    })
+    localStorage.cart = this.state.cart.map(item => item.id )
+  }
+
   render() {
     return (
       <div className="App">
         <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token}/>
         <SideContainer filterRocks={this.filterRocksByCategory}/>
-        <MainContainer setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
       </div>
     )
   }
-
   
 }
 
