@@ -40,6 +40,7 @@ class LogIn extends React.Component {
 
   signUpSubmitted = (event) => {
     event.preventDefault() 
+    
   }
 
   render(){

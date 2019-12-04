@@ -66,7 +66,7 @@ class App extends React.Component {
       <div className="App">
         <HeaderContainer />
         <SideContainer filterRocks={this.filterRocksByCategory}/>
-        <MainContainer allRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer token={this.state.token} loggedInUserId={this.state.loggedInUserId} allRocks={this.state.displayRocks} currentCart={this.state.cart}/>
       </div>
     )
   }

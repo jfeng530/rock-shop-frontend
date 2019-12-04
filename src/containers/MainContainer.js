@@ -27,7 +27,9 @@ export class MainContainer extends Component {
 
                     <Route path="/login" component={ LogInContainer } />
 
-                    <Route exact path="/:user" component={ AccountContainer } />
+                    <Route exact path="/:user">
+                        <AccountContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId}/>    
+                    </Route> 
 
                     <Route exact path="/:user/edit" component={ EditUserContainer } />
 
