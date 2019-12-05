@@ -1,5 +1,6 @@
 import React from 'react';
 import LongCard from '../../components/LongCard'
+import { Redirect } from 'react-router-dom'
 
 
 class CartContainer extends React.Component {
@@ -75,15 +76,9 @@ class CartContainer extends React.Component {
                 listStyle: "none"
                 }}>
                 {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
-<<<<<<< HEAD
-            </ListGroup>
-            <button onClick={this.handleCheckout}>Checkout</button> 
-            </>
-=======
             </li>
-            <button onClick={this.checkout} >Checkout</button> 
+            <button onClick={this.handleCheckout}>Checkout</button> 
             </div>
->>>>>>> cleanup
         )
     }
 }
