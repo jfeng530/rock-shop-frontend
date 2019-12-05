@@ -1,51 +1,45 @@
 import React from 'react';
-// import OrderCard from '../../components/OrderCard'
+import OrderCard from '../../components/OrderCard'
 import EditUsername from '../../components/EditUsername'
 import EditPassword from '../../components/EditPassword'
+import DeleteUser from '../../components/DeleteUser'
 
 class AccountContainer extends React.Component{
     state = {
-        myOrders: [],
+        myOrders: []
     }
     componentDidMount = async () => {
         let rawUser = await fetch(`http://localhost:3000/users/${localStorage.userId}`, {
             headers: {
+                "Content-Type": "application/json",
                 "Authorization": this.props.token
             }
             })
             let user = await rawUser.json()
+            console.log(this.state.myOrders)
             this.setState({
             myOrders: user.orders
             })
+            console.log(this.state.myOrders)
+
         }
+
  
     myOrders = () => {
-        // return this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />)
-        return this.state.myOrders.map(order => <p key={order.id}>{order.id} </p>)
+        return this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
     }
-
-    delete = async () => {
-        await fetch(`http://localhost:3000/users/${localStorage.userId}`, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": localStorage.token
-            }
-        })
-    } 
 
     render(){
     return (
         <div style={{textAlign: "Center", marginTop:"3%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
-         {/* <h2>My Account</h2> */}
         <h3 style={{margin: "30px"}}>Edit Info</h3>
          <EditUsername />
          <EditPassword />
          <br></br>
          <h3>Past Orders</h3>
-         {this.myOrders()}
+         <div style={{margin: "30px"}}>{this.myOrders()}</div> 
          <h3>Delete Account</h3>
-         <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px", marginBottom: "50px"}}  onClick={this.delete}>Delete</button>
+         <DeleteUser />
         </div>
     )}
 }

@@ -34,6 +34,7 @@ class LogIn extends React.Component {
           })
         } else {
           this.props.setToken(data)
+          console.log(data)
         }
       })
   }
@@ -57,6 +58,7 @@ class LogIn extends React.Component {
           })
         } else {
           this.props.setToken(data)
+          console.log(data)
         }
       })
   }
