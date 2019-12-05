@@ -1,19 +1,6 @@
 import React from 'react';
 import LongCard from '../../components/LongCard'
 
-const style = {
-    marginLeft: "140px",
-    marginTop:"5%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    fontFamily: "Courier New, Monospace", 
-    fontWeight: "100", 
-    color: "#343a40", 
-    textAlign: "center",
-    justifyContent: "space-around",
-    listStyle: "none"
-  }
 
 class CartContainer extends React.Component {
 
@@ -55,12 +42,24 @@ class CartContainer extends React.Component {
 
     render(){
         return (
-            <>
-            <li style={{style}}>
+            <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+            <li style={{   
+                margin: "75px 0", 
+                display: "flex",
+                flexDirection: "column",
+                flexWrap: "wrap",
+                fontFamily: "Courier New, Monospace", 
+                fontWeight: "100", 
+                fontSize: "18px",
+                color: "#343a40", 
+                textAlign: "left",
+                justifyContent: "space-around",
+                listStyle: "none"
+                }}>
                 {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
             </li>
-            <button onClick={this.checkout}>Checkout</button> 
-            </>
+            <button onClick={this.checkout} >Checkout</button> 
+            </div>
         )
     }
 }
