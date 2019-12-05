@@ -1,8 +1,22 @@
 import React from 'react';
 import LongCard from '../../components/LongCard'
-import ListGroup from 'react-bootstrap/ListGroup'
+
+const style = {
+    marginLeft: "140px",
+    marginTop:"5%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    fontFamily: "Courier New, Monospace", 
+    fontWeight: "100", 
+    color: "#343a40", 
+    textAlign: "center",
+    justifyContent: "space-around",
+    listStyle: "none"
+  }
 
 class CartContainer extends React.Component {
+
 
     checkout = async () => {
         let rawCheckout = await fetch("http://localhost:3000/orders", {
@@ -42,9 +56,9 @@ class CartContainer extends React.Component {
     render(){
         return (
             <>
-            <ListGroup>
+            <li style={{style}}>
                 {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
-            </ListGroup>
+            </li>
             <button onClick={this.checkout}>Checkout</button> 
             </>
         )

@@ -18,7 +18,7 @@ const RockCard = (props) => {
                     </div>
             </NavLink>
     )
-}
+{/* } */}
 
 export default RockCard;
 

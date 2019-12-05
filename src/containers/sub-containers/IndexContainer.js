@@ -1,7 +1,6 @@
 import React from 'react';
 import RockCard from '../../components/RockCard'
 import SideBar from "../../components/SideBar";
-// import { CardDeck } from 'react-bootstrap'
     const style = {
         marginLeft: "140px",
         marginTop:"5%",
@@ -23,12 +22,10 @@ class IndexContainer extends React.Component {
 
         return (
             <React.Fragment >
-            {/* <CardDeck> */}
             <SideBar filterRocksByCategory={this.props.filterRocksByCategory} />
                 <div style={style}>
                 {displayRocks}
                 </div>
-            {/* </CardDeck> */}
             </React.Fragment>
         )
     }
