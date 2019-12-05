@@ -55,7 +55,6 @@ class CartContainer extends React.Component {
                 // completedOrder is used to render a 'Completed Order' component
             })
         })
-
     }
 
     // CHECKOUT FUNCTION TO CLEAR CART AND PATCH ORDER WITH 'TRUE' CHECKOUT VALUE

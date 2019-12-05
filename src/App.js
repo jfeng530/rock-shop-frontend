@@ -32,7 +32,7 @@ class App extends React.Component {
   //   }))
   // }
 
-  setToken = ({ token, user_id, order_id, purchases,total }) => {
+  setToken = ({ token, user_id, order_id, purchases, total }) => {
     console.log(token)
     console.log(user_id)
     console.log(order_id)
@@ -46,7 +46,7 @@ class App extends React.Component {
       token: token,
       loggedInUserId: user_id,
       orderId: order_id,
-      cart: purchases.map(purchase => purchase),
+      cart: !!purchases ? purchases.map(purchase => purchase) : [],
       total: total
     })
   }
