@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CartContainer, DetailContainer, EditUsernameContainer, IndexContainer,  AccountContainer } from "./sub-containers";
+import { CartContainer, DetailContainer, IndexContainer,  AccountContainer } from "./sub-containers";
 import LogIn from '../components/LogIn';
 import { Route, Switch, Redirect } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ export class MainContainer extends Component {
                 
                 <Switch>
                     <Route exact path="/rocks" >
-                        <IndexContainer displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
+                        <IndexContainer sortRocks={this.props.sortRocks} displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
                     </Route>
 
                     <Route path="/rocks/:id" render={ this.renderRock } />
@@ -31,8 +31,6 @@ export class MainContainer extends Component {
                     <Route exact path="/:user">
                         <AccountContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId}/>    
                     </Route> 
-
-                    <Route exact path="/:user/edit" component={ EditUsernameContainer } />
 
                     <Route exact path='/'> 
                     {!!this.props.token ? <Redirect to="/rocks"/> : <LogIn setToken={this.props.setToken} />}

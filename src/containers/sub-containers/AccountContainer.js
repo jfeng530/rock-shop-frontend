@@ -1,7 +1,8 @@
 import React from 'react';
-import EditUsernameContainer from './EditUsernameContainer'
-import EditPasswordContainer from './EditPasswordContainer'
-// import OrderCard from '../../components/OrderCard'
+import OrderCard from '../../components/OrderCard'
+import EditUsername from '../../components/EditUsername'
+import EditPassword from '../../components/EditPassword'
+import DeleteUser from '../../components/DeleteUser'
 
 class AccountContainer extends React.Component{
     state = {
@@ -10,45 +11,35 @@ class AccountContainer extends React.Component{
     componentDidMount = async () => {
         let rawUser = await fetch(`http://localhost:3000/users/${localStorage.userId}`, {
             headers: {
+                "Content-Type": "application/json",
                 "Authorization": this.props.token
             }
             })
             let user = await rawUser.json()
+            console.log(this.state.myOrders)
             this.setState({
             myOrders: user.orders
             })
+            console.log(this.state.myOrders)
+
         }
-        
+
+ 
     myOrders = () => {
-        // return this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />)
-        return this.state.myOrders.map(order => <p>{order.id} </p>)
+        return this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
     }
 
     render(){
     return (
-        <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
-         <h1>My Account:</h1>
-         <form>
-        Username:
-        <input
-          type="text"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-      </form>
-         <button style={{margin: "20px"}} onClick={< EditUsernameContainer />}>Update</button>
-         <form>
-        Password: 
-        <input
-          type="text"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-      </form>
-         <button style={{margin: "20px"}} onclick={< EditPasswordContainer />}>Update</button>
+        <div style={{textAlign: "Center", marginTop:"3%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+        <h3 style={{margin: "30px"}}>Edit Info</h3>
+         <EditUsername />
+         <EditPassword />
          <br></br>
-         <h2>Past Orders:</h2>
-         {this.myOrders()}
+         <h3>Past Orders</h3>
+         <div style={{margin: "30px"}}>{this.myOrders()}</div> 
+         <h3>Delete Account</h3>
+         <DeleteUser />
         </div>
     )}
 }
