@@ -8,7 +8,7 @@ export class LongCard extends Component {
                 {<img src={this.props.cartItem.image_url} alt={this.props.cartItem.name} width="75px"/>}
                 {this.props.cartItem.name}
                 ${this.props.cartItem.price}
-                Quantity: {this.props.cartItem.quantity}
+                Quantity: 1
             </li>
             </>
         )
