@@ -21,7 +21,7 @@ const DetailContainer = (props) => {
                 <Card.Text>Color: {rock.color}</Card.Text>
                 <Card.Text>${rock.price}</Card.Text>
                 <Card.Text>Rating: {rock.rating}</Card.Text>
-                <Card.Text>Quantity: {rock.quantity}</Card.Text>
+                <Card.Text>Quantity: {rock.quantity - rock.purchases.count}</Card.Text>
                 <Button onClick={handleClick} variant="primary">Add to Cart</Button>
             </Card.Body>
         </Card>

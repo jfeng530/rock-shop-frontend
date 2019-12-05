@@ -9,7 +9,8 @@ class App extends React.Component {
     loggedInUserId: null,
     cart: [],
     allRocks: [],
-    displayRocks: []
+    displayRocks: [],
+    orderId: null
   }
 
   componentDidMount = async() => {
@@ -29,9 +30,9 @@ class App extends React.Component {
   //   }))
   // }
 
-  setToken = ({ token, user_id })  =>{
-    console.log(token)
-    console.log(user_id)
+  setToken = ({ token, user_id }) => {
+    // console.log(token)
+    // console.log(user_id)
 
     localStorage.token = token
     localStorage.userId = user_id
@@ -70,6 +71,18 @@ class App extends React.Component {
       cart: [...this.state.cart, rock]
     })
     localStorage.cart = this.state.cart.map(item => item.id )
+    if (this.state.loggedInUserId && this.state.orderId) {
+      fetch('http://localhost:3000/purchases', {
+        method: "POST",
+        headers: {
+          "Authorization": this.state.token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+
+        })
+      })
+    }
   }
 
   clearCart = () => {

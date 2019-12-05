@@ -7,7 +7,7 @@ export class HeaderContainer extends Component {
             <>
                 <NavBar handleLogOut={this.props.handleLogOut} token={this.props.token}/>
             </>
-        );
+        )
     }
 }
 
