@@ -32,10 +32,11 @@ class App extends React.Component {
   //   }))
   // }
 
-  setToken = ({ token, user_id, order_id }) => {
-    // console.log(token)
-    // console.log(user_id)
+  setToken = ({ token, user_id, order_id, purchases,total }) => {
+    console.log(token)
+    console.log(user_id)
     console.log(order_id)
+    console.log(purchases)
 
     localStorage.token = token
     localStorage.userId = user_id
@@ -44,7 +45,9 @@ class App extends React.Component {
     this.setState({
       token: token,
       loggedInUserId: user_id,
-      orderId: order_id
+      orderId: order_id,
+      cart: purchases.map(purchase => purchase),
+      total: total
     })
   }
 
@@ -72,23 +75,32 @@ class App extends React.Component {
 
   addToCart = (rock) => {
     // console.log(rock)
-    this.setState({
-      cart: [...this.state.cart, rock],
-      total: this.state.total + rock.price
-    })
+    // this.setState({
+    //   cart: [...this.state.cart, rock],
+    //   total: this.state.total + rock.price
+    // })
     localStorage.cart = this.state.cart.map(item => item.id )
-    // if (this.state.loggedInUserId && this.state.orderId) {
-    //   fetch('http://localhost:3000/purchases', {
-    //     method: "POST",
-    //     headers: {
-    //       "Authorization": this.state.token,
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-
-    //     })
-    //   })
-    // }
+    if (this.state.loggedInUserId) {
+      fetch('http://localhost:3000/purchases', {
+        method: "POST",
+        headers: {
+          "Authorization": this.state.token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          rock_id: rock.id,
+          order_id: this.state.orderId,
+          quantity: 1
+        })
+      })
+      .then(r => r.json())
+      .then(purchase => {
+        this.setState({
+          cart: [...this.state.cart, purchase],
+          total: this.state.total + purchase.rock.price
+        })
+      })
+    }
   }
 
   clearCart = () => {
@@ -97,8 +109,6 @@ class App extends React.Component {
       total: 0
     })
   }
-
-  
 
   render() {
     return (

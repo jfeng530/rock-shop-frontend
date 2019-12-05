@@ -1,12 +1,25 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom'
 
 class DetailContainer extends React.Component {
     
+    state = {
+        redirect: false
+    }
+    
     handleClick = () => {
         this.props.addToCart(this.props.rock)
+        this.setState({
+            redirect: true
+        })
     }
     
     render(){
+
+        if (this.state.redirect) {
+            return <Redirect to={'/cart'} />
+        }
+
         let rock = this.props.rock;
         console.log(rock.purchases.length)
         return (

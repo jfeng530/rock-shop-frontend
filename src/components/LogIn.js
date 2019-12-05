@@ -56,9 +56,31 @@ class LogIn extends React.Component {
             errors: data.errors
           })
         } else {
-          this.props.setToken(data)
+          this.createEmptyOrder(data)
+          // this.props.setToken(data)
         }
       })
+  }
+
+  createEmptyOrder = (data) => {
+    fetch("http://localhost:3000/orders", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({order: 
+      { user_id: data.user_id,
+        checkedout: false}    
+      })
+    }).then(res => res.json())
+    .then(orderObj => {
+      let stuff = {
+        token: data.token,
+        user_id: data.user_id,
+        order_id: orderObj.id
+      }
+      this.props.setToken(stuff)
+    })
   }
 
   render(){
