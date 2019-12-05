@@ -73,7 +73,7 @@ class LogIn extends React.Component {
         ? 
         <section>
           <h2 >Log In</h2>
-          <button style={{background: "white"}} onClick={ () => this.setState({ logIn: false }) }>Switch to Sign Up</button>
+          <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={ () => this.setState({ logIn: false }) }>Switch to Sign Up</button>
           <br></br>
           <form onSubmit={ this.logInSubmitted }>
             <br></br>
@@ -100,7 +100,7 @@ class LogIn extends React.Component {
         :
         <section>
           <h2>Sign Up</h2>
-          <button onClick={ () => this.setState({ logIn: true }) }>Switch to Log In</button>
+          <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={ () => this.setState({ logIn: true }) }>Switch to Log In</button>
           <br></br>
           <form onSubmit={ this.signUpSubmitted }>
           <br></br>

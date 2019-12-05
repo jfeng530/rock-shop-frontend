@@ -26,29 +26,34 @@ class AccountContainer extends React.Component{
 
     render(){
     return (
-        <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
-         <h1>My Account:</h1>
-         <form>
-        Username:
+        <div style={{textAlign: "Center", marginTop:"3%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+         {/* <h2>My Account</h2> */}
+        <h3 style={{margin: "30px"}}>Edit Info</h3>
+         <form >
+        <label >Username:</label>
+        <br></br>
         <input
           type="text"
           value={this.state.username}
           onChange={this.handleChange}
         />
       </form>
-         <button style={{margin: "20px"}} onClick={< EditUsernameContainer />}>Update</button>
+         <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={< EditUsernameContainer />}>Update</button>
          <form>
-        Password: 
+         <label style={{margin: "20px"}}>Password:</label>
+        <br></br>       
         <input
-          type="text"
+          type="password"
           value={this.state.username}
           onChange={this.handleChange}
         />
       </form>
-         <button style={{margin: "20px"}} onclick={< EditPasswordContainer />}>Update</button>
+         <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onclick={< EditPasswordContainer />}>Update</button>
          <br></br>
-         <h2>Past Orders:</h2>
+         <h3>Past Orders</h3>
          {this.myOrders()}
+         <h3>Delete Account</h3>
+         <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px", marginBottom: "50px"}} >Delete</button>
         </div>
     )}
 }

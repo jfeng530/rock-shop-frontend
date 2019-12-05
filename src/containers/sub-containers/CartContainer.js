@@ -54,6 +54,14 @@ class CartContainer extends React.Component {
         console.log(purchase)
     }
 
+    cartItems = () => {
+        if(this.props.currentCart.length < 1){
+            return "There are no items in your cart at this time."
+        } else{
+            return this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)
+        }  
+    }
+
     render(){
 
         if (this.state.redirect) {
@@ -71,13 +79,13 @@ class CartContainer extends React.Component {
                 fontWeight: "100", 
                 fontSize: "18px",
                 color: "#343a40", 
-                textAlign: "left",
+                textAlign: "center",
                 justifyContent: "space-around",
                 listStyle: "none"
                 }}>
-                {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
+                {this.cartItems()}
             </li>
-            <button onClick={this.handleCheckout}>Checkout</button> 
+            <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={this.handleCheckout}>Checkout</button> 
             </div>
         )
     }
