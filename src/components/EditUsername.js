@@ -16,8 +16,8 @@ class EditUsername extends React.Component{
             body: JSON.stringify({user:{
               username: newUsername}
             })
-            })
-            alert("Your username has been updated.")
+        })
+        alert("Your username has been updated.")
     }
 
     onChange = event => {

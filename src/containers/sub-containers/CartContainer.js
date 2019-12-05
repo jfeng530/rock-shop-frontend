@@ -19,6 +19,45 @@ class CartContainer extends React.Component {
         }
     }
 
+    checkout = () => {
+        let completedOrder
+        let newOrder
+        fetch(`http://localhost:3000/orders/${localStorage.orderId}`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": this.props.token.toString(),
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({order:{
+                checkedout: true}
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            this.props.clearCart()
+            completedOrder = data
+            fetch("http://localhost:3000/orders", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({order: 
+                { user_id: localStorage.userId,
+                    checkedout: false}    
+                })
+            })
+            .then(res => res.json())
+            .then(orderObj => {
+                newOrder = orderObj
+                console.log(newOrder)
+                // newOrder gets sent to App.js to setState
+                console.log(completedOrder)
+                // completedOrder is used to render a 'Completed Order' component
+            })
+        })
+
+    }
+
     // CHECKOUT FUNCTION TO CLEAR CART AND PATCH ORDER WITH 'TRUE' CHECKOUT VALUE
     // --------------------------------------------------------------------------
     // checkout = async () => {
