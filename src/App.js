@@ -11,7 +11,8 @@ class App extends React.Component {
     cart: [],
     allRocks: [],
     displayRocks: [],
-    orderId: null
+    orderId: null,
+    total: 0
   }
 
   componentDidMount = async() => {
@@ -31,16 +32,19 @@ class App extends React.Component {
   //   }))
   // }
 
-  setToken = ({ token, user_id }) => {
+  setToken = ({ token, user_id, order_id }) => {
     // console.log(token)
     // console.log(user_id)
+    console.log(order_id)
 
     localStorage.token = token
     localStorage.userId = user_id
+    localStorage.orderId = order_id
 
     this.setState({
       token: token,
-      loggedInUserId: user_id
+      loggedInUserId: user_id,
+      orderId: order_id
     })
   }
 
@@ -69,26 +73,28 @@ class App extends React.Component {
   addToCart = (rock) => {
     // console.log(rock)
     this.setState({
-      cart: [...this.state.cart, rock]
+      cart: [...this.state.cart, rock],
+      total: this.state.total + rock.price
     })
     localStorage.cart = this.state.cart.map(item => item.id )
-    if (this.state.loggedInUserId && this.state.orderId) {
-      fetch('http://localhost:3000/purchases', {
-        method: "POST",
-        headers: {
-          "Authorization": this.state.token,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+    // if (this.state.loggedInUserId && this.state.orderId) {
+    //   fetch('http://localhost:3000/purchases', {
+    //     method: "POST",
+    //     headers: {
+    //       "Authorization": this.state.token,
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
 
-        })
-      })
-    }
+    //     })
+    //   })
+    // }
   }
 
   clearCart = () => {
     this.setState({
-      cart: []
+      cart: [],
+      total: 0
     })
   }
 
@@ -98,7 +104,7 @@ class App extends React.Component {
     return (
       <React.Fragment >
         <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token} cartNum={this.state.cart.length}/>
-        <MainContainer filterRocksByCategory={this.filterRocksByCategory} clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer filterRocksByCategory={this.filterRocksByCategory} clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} total={this.state.total} currentCart={this.state.cart}/>
       </React.Fragment>
     )
   }

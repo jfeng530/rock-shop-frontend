@@ -21,7 +21,7 @@ export class MainContainer extends Component {
                     <Route path="/rocks/:id" render={ this.renderRock } />
 
                     <Route path="/cart" >
-                        <CartContainer clearCart={this.props.clearCart} token={this.props.token} loggedInUserId={this.props.loggedInUserId} currentCart={this.props.currentCart}/>
+                        <CartContainer clearCart={this.props.clearCart} token={this.props.token} loggedInUserId={this.props.loggedInUserId} total={this.props.total} currentCart={this.props.currentCart}/>
                     </Route>
 
                     <Route path="/login" >

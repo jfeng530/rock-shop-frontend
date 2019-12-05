@@ -62,22 +62,23 @@ class CartContainer extends React.Component {
         
         return (
             <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
-            <li style={{   
-                margin: "75px 0", 
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                fontFamily: "Courier New, Monospace", 
-                fontWeight: "100", 
-                fontSize: "18px",
-                color: "#343a40", 
-                textAlign: "left",
-                justifyContent: "space-around",
-                listStyle: "none"
-                }}>
-                {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
-            </li>
-            <button onClick={this.handleCheckout}>Checkout</button> 
+                <li style={{   
+                    margin: "75px 0", 
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "wrap",
+                    fontFamily: "Courier New, Monospace", 
+                    fontWeight: "100", 
+                    fontSize: "18px",
+                    color: "#343a40", 
+                    textAlign: "left",
+                    justifyContent: "space-around",
+                    listStyle: "none"
+                    }}>
+                    {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
+                </li>
+                <h2>Total: ${this.props.total}</h2>
+                <button onClick={this.handleCheckout}>Checkout</button> 
             </div>
         )
     }
