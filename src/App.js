@@ -102,7 +102,7 @@ class App extends React.Component {
       .then(r => r.json())
       .then(purchase => {
         this.setState({
-          cart: [...this.state.cart, purchase],
+          cart: [...this.state.cart, purchase.rock],
           total: this.state.total + purchase.rock.price
         })
       })
