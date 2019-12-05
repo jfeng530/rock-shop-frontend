@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 
+const style = {
+    margin: "10px",
+    position: "absolute",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    fontFamily: "Courier New, Monospace", 
+    fontWeight: "100", 
+    color: "#343a40", 
+    textAlign: "center",
+    // justifyContent: "space-around"
+  }
+
 export class SideBar extends Component {
 
     state = {
@@ -14,8 +28,8 @@ export class SideBar extends Component {
     
     render() {
         return (
-            <>
-                <h4>Categories</h4>
+            <div style={style}>
+                <h4 style={{marginTop: "50px", marginBottom: "50px"}}>Categories:</h4>
                 <NavLink to="/rocks">
                     <select value={this.state.value} onChange={this.handleChange}>
                         <option value="All">All</option>
@@ -28,7 +42,7 @@ export class SideBar extends Component {
                         <option value="Igneous">Igneous</option>
                     </select>
                 </NavLink>
-            </>
+            </div>
         )
     }
 }

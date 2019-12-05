@@ -3,6 +3,7 @@ import React from 'react';
 import HeaderContainer from "./containers/HeaderContainer";
 import MainContainer from "./containers/MainContainer";
 
+
 class App extends React.Component {
   state = {
     token:  localStorage.token,
@@ -78,12 +79,14 @@ class App extends React.Component {
     })
   }
 
+  
+
   render() {
     return (
-      <div className="App">
-        <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token}/>
+      <React.Fragment >
+        <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token} cartNum={this.state.cart.length}/>
         <MainContainer filterRocksByCategory={this.filterRocksByCategory} clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
-      </div>
+      </React.Fragment>
     )
   }
   
