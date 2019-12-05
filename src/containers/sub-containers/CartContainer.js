@@ -1,7 +1,5 @@
 import React from 'react';
 import LongCard from '../../components/LongCard'
-import ListGroup from 'react-bootstrap/ListGroup'
-import {Redirect} from 'react-router-dom'
 
 
 class CartContainer extends React.Component {
@@ -62,12 +60,30 @@ class CartContainer extends React.Component {
         }
         
         return (
-            <>
-            <ListGroup>
+            <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+            <li style={{   
+                margin: "75px 0", 
+                display: "flex",
+                flexDirection: "column",
+                flexWrap: "wrap",
+                fontFamily: "Courier New, Monospace", 
+                fontWeight: "100", 
+                fontSize: "18px",
+                color: "#343a40", 
+                textAlign: "left",
+                justifyContent: "space-around",
+                listStyle: "none"
+                }}>
                 {this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)}
+<<<<<<< HEAD
             </ListGroup>
             <button onClick={this.handleCheckout}>Checkout</button> 
             </>
+=======
+            </li>
+            <button onClick={this.checkout} >Checkout</button> 
+            </div>
+>>>>>>> cleanup
         )
     }
 }

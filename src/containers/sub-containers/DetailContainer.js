@@ -1,5 +1,4 @@
 import React from 'react';
-import {Card, Button} from 'react-bootstrap'
 
 const DetailContainer = (props) => {
 
@@ -12,19 +11,19 @@ const DetailContainer = (props) => {
     console.log(props)
     return (
         <>
-        <Card style={{ width: '20rem' }}>
-            <Card.Img variant="top" src={rock.image_url} />
-            <Card.Body>
-                <Card.Title>{rock.name}</Card.Title>
-                <Card.Text>{rock.description}</Card.Text>
-                <Card.Text>Type: {rock.category}</Card.Text>
-                <Card.Text>Color: {rock.color}</Card.Text>
-                <Card.Text>${rock.price}</Card.Text>
-                <Card.Text>Rating: {rock.rating}</Card.Text>
-                <Card.Text>Quantity: {rock.quantity - rock.purchases.count}</Card.Text>
-                <Button onClick={handleClick} variant="primary">Add to Cart</Button>
-            </Card.Body>
-        </Card>
+        <div style={{textAlign: "Center", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+            <h2 style={{margin: "25px"}}>{rock.name}</h2>
+            <img width="700px" src={rock.image_url} alt={rock.name}/>
+            <div>
+                <p style={{margin: "20px"}}>{rock.description}</p>
+                <h4>Type: {rock.category}</h4>
+                <h4>Color: {rock.color}</h4>
+                <h4>${rock.price}</h4>
+                <h4>Rating: {rock.rating}</h4>
+                <h4>Quantity: {rock.quantity}</h4>
+                <button onClick={handleClick} variant="primary" style={{margin: "30px"}}>Add to Cart</button>
+            </div>
+        </div>
         </>
     );
 }
