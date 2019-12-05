@@ -66,6 +66,12 @@ class App extends React.Component {
     }
   }
 
+  sortRocks = (sortedRocks) => {
+    this.setState({
+      displayRocks: sortedRocks
+    })
+  }
+
   addToCart = (rock) => {
     // console.log(rock)
     this.setState({
@@ -98,7 +104,7 @@ class App extends React.Component {
     return (
       <React.Fragment >
         <HeaderContainer handleLogOut={this.logOutClick} token={this.state.token} cartNum={this.state.cart.length}/>
-        <MainContainer filterRocksByCategory={this.filterRocksByCategory} clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
+        <MainContainer sortRocks={this.sortRocks} filterRocksByCategory={this.filterRocksByCategory} clearCart={this.clearCart} addToCart={this.addToCart} setToken={this.setToken} token={this.state.token} loggedInUserId={this.state.loggedInUserId} displayRocks={this.state.displayRocks} currentCart={this.state.cart}/>
       </React.Fragment>
     )
   }

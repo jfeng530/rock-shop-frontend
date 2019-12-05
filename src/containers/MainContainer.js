@@ -15,7 +15,7 @@ export class MainContainer extends Component {
                 
                 <Switch>
                     <Route exact path="/rocks" >
-                        <IndexContainer displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
+                        <IndexContainer sortRocks={this.props.sortRocks} displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
                     </Route>
 
                     <Route path="/rocks/:id" render={ this.renderRock } />
