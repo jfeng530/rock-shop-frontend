@@ -19,7 +19,9 @@ export class MainContainer extends Component {
                         <IndexContainer sortRocks={this.props.sortRocks} displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
                     </Route>
 
-                    <Route path="/rocks/:id" render={ this.renderRock } />
+                    <Route path="/rocks/:id">
+                        { this.renderRock } 
+                    </Route> 
 
                     <Route path="/cart" >
                         <CartContainer removeFromCart={this.props.removeFromCart} clearCart={this.props.clearCart} token={this.props.token} loggedInUserId={this.props.loggedInUserId} total={this.props.total} currentCart={this.props.currentCart}/>
