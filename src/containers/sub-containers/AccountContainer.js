@@ -16,17 +16,15 @@ class AccountContainer extends React.Component{
             }
             })
             let user = await rawUser.json()
-            console.log(this.state.myOrders)
             this.setState({
             myOrders: user.orders
             })
-            console.log(this.state.myOrders)
 
         }
+   
 
- 
     myOrders = () => {
-        return this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
+        return !!this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
     }
 
     render(){
@@ -37,7 +35,8 @@ class AccountContainer extends React.Component{
          <EditPassword />
          <br></br>
          <h3>Past Orders</h3>
-         <div style={{margin: "30px"}}>{this.myOrders()}</div> 
+         {/* <div style={{margin: "30px"}}>{this.myOrders()}</div>  */}
+         <p>{this.myOrders()}</p>
          <h3>Delete Account</h3>
          <DeleteUser />
         </div>
