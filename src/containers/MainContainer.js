@@ -31,7 +31,7 @@ export class MainContainer extends Component {
                         {!!this.props.token ? <Redirect to="/rocks"/> : <LogIn setToken={this.props.setToken} />}
                     </Route>
 
-                    <Route exact path="/:user">
+                    <Route exact path="/account">
                         <AccountContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId}/>    
                     </Route> 
 
