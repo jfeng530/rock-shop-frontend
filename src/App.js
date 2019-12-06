@@ -2,6 +2,7 @@ import React from 'react';
 // import './App.css';
 import HeaderContainer from "./containers/HeaderContainer";
 import MainContainer from "./containers/MainContainer";
+import { Redirect } from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -12,7 +13,8 @@ class App extends React.Component {
     allRocks: [],
     displayRocks: [],
     orderId: null,
-    total: 0
+    total: 0,
+    redirect: false
   }
 
   componentDidMount = async() => {
@@ -53,6 +55,7 @@ class App extends React.Component {
       loggedInUserId: null,
       token: null
     })
+    
   }
 
   filterRocksByCategory = (value) => {

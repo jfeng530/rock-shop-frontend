@@ -6,13 +6,14 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 
 export class MainContainer extends Component {
 
-    loginRender = () => {if (!!this.props.token){return <Redirect to="/rocks" />} else return <Redirect to="/login"/>}
+    loginRender = () => {if (!!this.props.token) {return <Redirect to="/rocks" />} else return <Redirect to="/login"/>}
     
     render() {
         // console.log(this.props)
         return (
             <>
-                
+                {this.loginRender()}
+
                 <Switch>
                     <Route exact path="/rocks" >
                         <IndexContainer sortRocks={this.props.sortRocks} displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
