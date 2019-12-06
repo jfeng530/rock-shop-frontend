@@ -98,9 +98,37 @@ class CartContainer extends React.Component {
 
     cartItems = () => {
         if(this.props.currentCart.length < 1){
-            return "There are no items in your cart at this time."
+            return <p style ={{
+                marginTop: "20%",
+                fontFamily: "Courier New, Monospace", 
+                fontWeight: "100", 
+                fontSize: "18px",
+                color: "#343a40", 
+                textAlign: "center",
+                justifyContent: "space-around"
+            }}>
+                There are no items in your cart at this time.
+                </p>
         } else{
-            return this.props.currentCart.map(item => <LongCard removeFromCart={this.props.removeFromCart} key={item.id} cartItem={item} />)
+            return   <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+            <li style={{   
+                margin: "175px", 
+                display: "flex",
+                flexDirection: "column",
+                flexWrap: "wrap",
+                fontFamily: "Courier New, Monospace", 
+                fontWeight: "100", 
+                fontSize: "18px",
+                color: "#343a40", 
+                textAlign: "left",
+                justifyContent: "space-around",
+                listStyle: "none"
+                }}>
+                {this.props.currentCart.map(item => <LongCard removeFromCart={this.props.removeFromCart} key={item.id} cartItem={item} />)}
+            </li>
+            <h2>Total: ${this.props.total}</h2>
+            <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={this.handleCheckout}>Checkout</button> 
+            </div>
         }  
     }
 
@@ -110,26 +138,9 @@ class CartContainer extends React.Component {
             return <Redirect to={'/login'} />
         }
         
-        return (
-            <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
-            <li style={{   
-                margin: "75px 0", 
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                fontFamily: "Courier New, Monospace", 
-                fontWeight: "100", 
-                fontSize: "18px",
-                color: "#343a40", 
-                textAlign: "center",
-                justifyContent: "space-around",
-                listStyle: "none"
-                }}>
-                {this.cartItems()}
-            </li>
-            <h2>Total: ${this.props.total}</h2>
-            <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={this.handleCheckout}>Checkout</button> 
-            </div>
+        return (<>
+          {this.cartItems()}
+          </>
         )
     }
 }
