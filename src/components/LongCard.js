@@ -14,8 +14,9 @@ export class LongCard extends Component {
                 <span style={{margin: "20px"}}>{this.props.cartItem.rock.name}</span>
                 <span style={{margin: "20px"}}>${this.props.cartItem.rock.price}</span>
                 <span style={{margin: "20px"}}>Quantity: 1</span>
+                <button style={{ fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={this.handleClick}>Remove</button>
             </li>
-            <button onClick={this.handleClick}>Remove From Cart</button>
+            
             </>
         )
     }
