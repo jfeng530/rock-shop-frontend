@@ -33,8 +33,22 @@ class LogIn extends React.Component {
             errors: data.errors
           })
         } else {
-          this.props.setToken(data)
+          // debugger
           console.log(data)
+          // this.props.setToken(data)
+          fetch(`http://localhost:3000/orders/${data.order_id}`)
+          .then(r => r.json())
+          .then(order => {
+            let information = {
+              token: data.token,
+              user_id: data.user_id,
+              order_id: data.order_id,
+              purchases: order.purchases,
+              total: data.total
+            }
+            this.props.setToken(information)
+            // debugger
+          })
         }
       })
   }

@@ -100,7 +100,7 @@ class CartContainer extends React.Component {
         if(this.props.currentCart.length < 1){
             return "There are no items in your cart at this time."
         } else{
-            return this.props.currentCart.map(item => <LongCard key={item.id} cartItem={item} />)
+            return this.props.currentCart.map(item => <LongCard removeFromCart={this.props.removeFromCart} key={item.id} cartItem={item} />)
         }  
     }
 

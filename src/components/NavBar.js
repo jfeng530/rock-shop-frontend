@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 export class NavBar extends Component {
+  
   logButton = () => {
     if(!this.props.token){
       return <Link to="/login" style={{color: "#343a40", textDecorationColor: "#929ca7"}}>Log In</Link>
