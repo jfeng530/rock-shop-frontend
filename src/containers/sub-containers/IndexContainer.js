@@ -1,6 +1,18 @@
 import React from 'react';
 import RockCard from '../../components/RockCard'
-import { Card, CardDeck } from 'react-bootstrap'
+import SideBar from "../../components/SideBar";
+    const style = {
+        marginLeft: "140px",
+        marginTop:"5%",
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        fontFamily: "Courier New, Monospace", 
+        fontWeight: "100", 
+        color: "#343a40", 
+        textAlign: "center",
+        justifyContent: "space-around"
+      }
 
 class IndexContainer extends React.Component {
     
@@ -9,9 +21,12 @@ class IndexContainer extends React.Component {
         const displayRocks = this.props.displayRocks.map(rock => <RockCard key={rock.id} rock={rock} />)
 
         return (
-            <CardDeck>
+            <React.Fragment >
+            <SideBar sortRocks={this.props.sortRocks} filterRocksByCategory={this.props.filterRocksByCategory} displayRocks={this.props.displayRocks}/>
+                <div style={style}>
                 {displayRocks}
-            </CardDeck>
+                </div>
+            </React.Fragment>
         )
     }
 }

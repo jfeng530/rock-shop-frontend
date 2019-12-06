@@ -1,34 +1,44 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, Form, FormControl, Button, NavItem } from 'react-bootstrap';
 
 export class NavBar extends Component {
   logButton = () => {
     if(!this.props.token){
-      return <Nav.Link as={Link} to="/login">Log In</Nav.Link>
+      return <Link to="/login" style={{color: "#343a40", textDecorationColor: "#929ca7"}}>Log In</Link>
     } else {
-      return <Nav.Link onClick={this.handleLogOut}>Log Out</Nav.Link>
+      return <a href="/" onClick={this.handleLogOut} style={{color: "#343a40", textDecorationColor: "#929ca7"}}>Log Out</a>
     }
   }
-  handleLogOut = () => {
+  handleLogOut = (e) => {
+    e.preventDefault()
     this.props.handleLogOut()
   }
 
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand as={Link} to="/">We Sell Rocks</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/rocks">Browse Rocks</Nav.Link>
-          </Nav>
-          <Nav>
-            {this.logButton()}
-            <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <nav style={{ 
+        backgroundColor: "white", 
+        position: "-webkit-sticky", 
+        position: "sticky",
+        top: "0", 
+        borderBottom: "solid", 
+        borderWidth: "1px", 
+        borderColor: "#929ca7", 
+        paddingBottom: "25px", 
+        textAlign: "Center", 
+        fontSize: "20px", 
+        marginTop:"3%", 
+        fontFamily: "Courier New, Monospace", 
+        fontWeight: "100", 
+        color: "#343a40", 
+        display: "flex", 
+        justifyContent: "space-around"}}>
+        <Link to="/" style={{color: "#343a40", textDecorationColor: "#929ca7"}}>Rock {<img style={{width: "50px"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzUBT0EORU4YFpG7YJr8Vm3Pn6WqAYurrIN4Qy4KzBTEMR-_c3&s" alt="logo"/>} Shop</Link>
+        <Link to="/rocks" style={{color: "#343a40", textDecorationColor: "#929ca7"}}>{!!localStorage.userId ? "Browse Rocks" : ""}</Link>
+        <Link to={`/${localStorage.userId}`} style={{color: "#343a40", textDecorationColor: "#929ca7"}}>{!!localStorage.userId ? "My Account" : ""}</Link>
+        <Link to="/cart" style={{color: "#343a40", textDecorationColor: "#929ca7"}}>{!!localStorage.userId ? "Cart: " + this.props.cartNum : ""}</Link>
+        {this.logButton()}
+      </nav>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 class LogIn extends React.Component {
-
+    
   state = {
     logIn: true,
     username: "",
@@ -34,6 +34,7 @@ class LogIn extends React.Component {
           })
         } else {
           this.props.setToken(data)
+          console.log(data)
         }
       })
   }
@@ -56,13 +57,35 @@ class LogIn extends React.Component {
             errors: data.errors
           })
         } else {
-          this.props.setToken(data)
+          this.createEmptyOrder(data)
+          // this.props.setToken(data)
         }
       })
   }
 
+  createEmptyOrder = (data) => {
+    fetch("http://localhost:3000/orders", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({order: 
+      { user_id: data.user_id,
+        checkedout: false}    
+      })
+    }).then(res => res.json())
+    .then(orderObj => {
+      let stuff = {
+        token: data.token,
+        user_id: data.user_id,
+        order_id: orderObj.id
+      }
+      this.props.setToken(stuff)
+    })
+  }
+
   render(){
-    return <>
+    return <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
       <ul>
         {
           this.state.errors.map(error => <li>{ error }</li>)
@@ -72,48 +95,61 @@ class LogIn extends React.Component {
         this.state.logIn 
         ? 
         <section>
-          <h2>Log In</h2>
-          <button onClick={ () => this.setState({ logIn: false }) }>I need to register!!!</button>
+          <h2 >Log In</h2>
+          <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={ () => this.setState({ logIn: false }) }>Switch to Sign Up</button>
+          <br></br>
           <form onSubmit={ this.logInSubmitted }>
+            <br></br>
             <label  htmlFor="log_in_username">Username</label>
+            <br></br>
             <input  id="log_in_username" 
                     type="text" 
                     onChange={ this.onChange /* for controlled form input status */ } 
                     name="username" 
                     value={ this.state.username /* for controlled form input status */ } />
+                    <br></br>
+                    <br></br>
             <label  htmlFor="log_in_password">Password</label>
+            <br></br>
             <input  id="log_in_password" 
                     type="password" 
                     onChange={ this.onChange } 
                     name="password" 
                     value={ this.state.password } />
+                    <br></br><br></br>
             <input type="submit" />
           </form>
         </section>
         :
         <section>
-          <h2>Sign up</h2>
-          <button onClick={ () => this.setState({ logIn: true }) }>I already signed up!!!</button>
+          <h2>Sign Up</h2>
+          <button style={{fontSize: "18px", borderBottom: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px"}} onClick={ () => this.setState({ logIn: true }) }>Switch to Log In</button>
+          <br></br>
           <form onSubmit={ this.signUpSubmitted }>
+          <br></br>
             <label  htmlFor="sign_up_username">Username</label>
+            <br></br>
             <input  id="sign_up_username" 
                     type="text" 
                     onChange={ this.onChange } 
                     name="username" 
                     value={ this.state.username } />
+                    <br></br><br></br>
             <label  htmlFor="sign_up_password">Password</label>
+            <br></br>
             <input  id="sign_up_password" 
                     type="password" 
                     onChange={ this.onChange } 
                     name="password" 
                     value={ this.state.password } />
+                    <br></br><br></br>
             <input type="submit" />
           </form>
         </section>
       }
-    </>
+    </div>
   }
 
 }
 
-export default LogIn
+export default LogIn;

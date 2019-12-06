@@ -1,27 +1,46 @@
 import React from 'react';
+import OrderCard from '../../components/OrderCard'
+import EditUsername from '../../components/EditUsername'
+import EditPassword from '../../components/EditPassword'
+import DeleteUser from '../../components/DeleteUser'
 
 class AccountContainer extends React.Component{
     state = {
         myOrders: []
     }
     componentDidMount = async () => {
-        let rawUser = await fetch(`http://localhost:3000/users/6`, {
+        let rawUser = await fetch(`http://localhost:3000/users/${localStorage.userId}`, {
             headers: {
-                "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1fQ.F1zStOFrmzxhB7Kh5wVbe0E1lL_LnGfoEZuqA5YI748"
+                "Content-Type": "application/json",
+                "Authorization": this.props.token
             }
             })
             let user = await rawUser.json()
+            console.log(this.state.myOrders)
             this.setState({
             myOrders: user.orders
             })
-            console.log(user.orders)
+            console.log(this.state.myOrders)
+
         }
-    
+
+ 
+    myOrders = () => {
+        return this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
+    }
+
     render(){
     return (
-        <React.Fragment>
-         
-        </React.Fragment>
+        <div style={{textAlign: "Center", marginTop:"3%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+        <h3 style={{margin: "30px"}}>Edit Info</h3>
+         <EditUsername />
+         <EditPassword />
+         <br></br>
+         <h3>Past Orders</h3>
+         <div style={{margin: "30px"}}>{this.myOrders()}</div> 
+         <h3>Delete Account</h3>
+         <DeleteUser />
+        </div>
     )}
 }
 

@@ -1,10 +1,8 @@
 import AccountContainer from './AccountContainer';
 import CartContainer from './CartContainer';
 import DetailContainer from './DetailContainer';
-import EditUserContainer from './EditUserContainer';
 import IndexContainer from './IndexContainer';
-import LogInContainer from './LogInContainer';
-
+import SideBar from '../../components/SideBar';
 export {
-  AccountContainer, CartContainer, DetailContainer, EditUserContainer, IndexContainer, LogInContainer
+  AccountContainer, CartContainer, DetailContainer, IndexContainer, SideBar
 };
