@@ -24,6 +24,10 @@ class AccountContainer extends React.Component{
 
         }
 
+        // activeOrder = () => {
+        //     return this.state.myOrders.length ? this.state.myOrders.filter(order => )
+        // }
+
  
     myOrders = () => {
         return this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
