@@ -21,7 +21,7 @@ class OrderCard extends React.Component {
     }
 
     purchases = () => {
-    return !!this.state.purchases.length ? this.state.purchases.map(purchase => <li style={{listStyle: "none"}}>{purchase.quantity} {purchase.rock.name} ${purchase.quantity * purchase.rock.price}</li>) : "Empty Order"
+    return !!this.state.purchases.length ? this.state.purchases.map(purchase => <li style={{listStyle: "none"}}>{purchase.quantity} {purchase.rock.name} ${purchase.quantity * purchase.rock.price}</li>) : false
     }
 
     reducer = (total, num) => total + num
@@ -31,18 +31,17 @@ class OrderCard extends React.Component {
     }
 
     total = () => {
-       return  !!this.purchaseTotals().length ? this.purchaseTotals().reduce(this.reducer) : 0
+       return  !!this.purchaseTotals().length ? this.purchaseTotals().reduce(this.reducer) : false
     }
 
     render(){
-    return (
-        <div style={{ border: "solid", borderWidth: "1px", borderColor: "#929ca7", padding: "25px", width: "600px", margin: "0 auto", marginTop: "10px"}}>
+    return ( !!this.total() ? <div style={{ border: "solid", borderWidth: "1px", borderColor: "#929ca7", padding: "25px", width: "600px", margin: "0 auto", marginTop: "10px"}}>
     <h5>Order # {this.props.order.id}:</h5>
     <li style={{listStyle: "none", margin: "10px"}}>
         {this.purchases()}
     </li>
     <p style={{marginTop: "100px"}}>Total: ${this.total()}</p>
-    </div>
+    </div> : null
     )}
 }
 export default OrderCard;
