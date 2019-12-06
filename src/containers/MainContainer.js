@@ -6,19 +6,22 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 
 export class MainContainer extends Component {
 
-    loginRender = () => {if (!!this.props.token){return <Redirect to="/rocks" />} else return <Redirect to="/login"/>}
+    loginRender = () => {if (!!this.props.token) {return <Redirect to="/rocks" />} else return <Redirect to="/login"/>}
     
     render() {
         // console.log(this.props)
         return (
             <>
-                
+                {this.loginRender()}
+
                 <Switch>
                     <Route exact path="/rocks" >
                         <IndexContainer sortRocks={this.props.sortRocks} displayRocks={this.props.displayRocks} filterRocksByCategory={this.props.filterRocksByCategory} />
                     </Route>
 
-                    <Route path="/rocks/:id" render={ this.renderRock } />
+                    <Route path="/rocks/:id">
+                        { this.renderRock } 
+                    </Route> 
 
                     <Route path="/cart" >
                         <CartContainer removeFromCart={this.props.removeFromCart} clearCart={this.props.clearCart} token={this.props.token} loggedInUserId={this.props.loggedInUserId} total={this.props.total} currentCart={this.props.currentCart}/>
@@ -28,7 +31,7 @@ export class MainContainer extends Component {
                         {!!this.props.token ? <Redirect to="/rocks"/> : <LogIn setToken={this.props.setToken} />}
                     </Route>
 
-                    <Route exact path="/:user">
+                    <Route exact path="/account">
                         <AccountContainer token={this.props.token} loggedInUserId={this.props.loggedInUserId}/>    
                     </Route> 
 

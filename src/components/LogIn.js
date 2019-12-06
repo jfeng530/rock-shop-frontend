@@ -92,7 +92,9 @@ class LogIn extends React.Component {
       let stuff = {
         token: data.token,
         user_id: data.user_id,
-        order_id: orderObj.id
+        order_id: orderObj.id,
+        token: data.token,
+        total: 0
       }
       this.props.setToken(stuff)
     })

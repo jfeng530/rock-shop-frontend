@@ -78,8 +78,6 @@ export class SideBar extends Component {
         })
         this.props.sortRocks(this.state.sortedRocks)
     }
-
-
     
     render() {
         return (

@@ -19,13 +19,18 @@ class AccountContainer extends React.Component{
             this.setState({
             myOrders: user.orders
             })
-
+            console.log(this.state.myOrders)
         }
    
+        pastOrders = () => {
+            console.log(this.myOrders)
+            return !!this.state.myOrders.length ? this.state.myOrders.filter(order => order.checkedout === true ) : false
+        }
 
-    myOrders = () => {
-        return !!this.state.myOrders.length ? this.state.myOrders.map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
-    }
+        myOrders = () => {
+            return !!this.pastOrders() ? this.pastOrders().map(order => <OrderCard key={order.id} order={order} />) : "You have not placed any orders."
+        }
+
 
     render(){
     return (
