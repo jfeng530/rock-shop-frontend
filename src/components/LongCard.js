@@ -15,5 +15,5 @@ export class LongCard extends Component {
         )
     }
 }
-
+// testing
 export default LongCard;
