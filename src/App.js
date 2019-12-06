@@ -93,11 +93,11 @@ class App extends React.Component {
           "Authorization": this.state.token,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
+        body: JSON.stringify({purchase: {
           rock_id: rock.id,
-          order_id: this.state.orderId,
+          order_id: localStorage.orderId,
           quantity: 1
-        })
+        }})
       })
       .then(r => r.json())
       .then(purchase => {
