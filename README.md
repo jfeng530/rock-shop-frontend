@@ -34,7 +34,7 @@
   - Edit, update and delete user account information 
   
   ### Challenges
-  - Figuring out how the classes in the backend will interact with one another to form a fully functioning e-commerce application 
+  - Figuring out how the classes in the back-end will interact with one another to form a fully functioning e-commerce application 
     - Individual cart items became a "joiner-class" (`Purchase`), joining the `Rock` class and the `Order` class
     - Every time an item is added to a cart, a `Purchase` instance is created with the specific `Rock` and the current `Order` (cart)
   - Rendering the current cart associated to user when user logs in
