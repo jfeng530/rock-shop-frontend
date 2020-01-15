@@ -23,7 +23,7 @@
 
 # Overview
   ### Description
-  Rock Shop is an e-commerce web application for purchasing rocks. It utilizes React with inline CSS for a dynamic and interactive user experience. Rock Shop manages user authentication, cart funtionality and purchases using JWT, localStorage and a Ruby on Rails backend.
+  Rock Shop is an e-commerce web application for purchasing rocks. It utilizes React with inline CSS for a dynamic and interactive user experience. Rock Shop manages user authentication, cart functionality and purchases using JWT, localStorage and a Ruby on Rails backend.
   
   ### Features
   - View, sort and filter rocks by category, price, rating and rarity 
