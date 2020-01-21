@@ -30,7 +30,7 @@
   - Create an account with a unique username and password along with log-in/log-out functionality
   - Add and remove items to a cart where they will be saved and stored in backend
   - Upon logging in, the user's most recent cart (along with its items) will be loaded and rendered
-  - View previous purchases (with items, price and total)
+  - View previous purchases (with items, price, and total)
   - Edit, update, and delete user account information 
   
   ### Challenges
